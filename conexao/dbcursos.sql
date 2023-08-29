@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Jun-2023 às 15:12
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.0.25
+-- Tempo de geração: 29-Ago-2023 às 21:57
+-- Versão do servidor: 10.4.20-MariaDB
+-- versão do PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,98 +32,46 @@ CREATE TABLE `tblalunos` (
   `NomeAluno` varchar(100) NOT NULL,
   `CpfAluno` int(11) NOT NULL,
   `IdadeAluno` int(11) NOT NULL,
+  `cepAluno` int(11) NOT NULL,
+  `lograAluno` varchar(150) NOT NULL,
+  `numAluno` int(11) NOT NULL,
+  `cidadeAluno` varchar(150) NOT NULL,
+  `ufAluno` varchar(2) NOT NULL,
+  `bairroAluno` varchar(100) DEFAULT NULL,
+  `complAluno` varchar(150) NOT NULL,
+  `idTurma` int(11) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `ativo` int(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `tblalunos`
 --
 
-INSERT INTO `tblalunos` (`idAluno`, `NomeAluno`, `CpfAluno`, `IdadeAluno`, `idUsuario`, `ativo`) VALUES
-(1, 'Pedro', 321231, 15, NULL, 1);
+INSERT INTO `tblalunos` (`idAluno`, `NomeAluno`, `CpfAluno`, `IdadeAluno`, `cepAluno`, `lograAluno`, `numAluno`, `cidadeAluno`, `ufAluno`, `bairroAluno`, `complAluno`, `idTurma`, `idUsuario`, `ativo`) VALUES
+(1, 'Pedro', 321231, 15, 0, '', 0, '', '', '', '', 1, NULL, 1),
+(2, 'Matheus', 2123126878, 18, 16503020, 'Rua Ali', 3, 'Cafelândia', 'SP', 'Pena', '', 1, NULL, 1),
+(3, 'Enzo', 2147483647, 15, 16500324, 'Rua Ivo Manoel Lacava', 3, 'Cafelândia', 'SP', 'Parque Solar Assumpção', '', 1, NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tblmateria`
+-- Estrutura da tabela `tblturmas`
 --
 
-CREATE TABLE `tblmateria` (
-  `idMateria` int(11) NOT NULL,
-  `nome` varchar(155) NOT NULL,
-  `ativo` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `tblmateria`
---
-
-INSERT INTO `tblmateria` (`idMateria`, `nome`, `ativo`) VALUES
-(1, 'Teste', 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tblprofessor`
---
-
-CREATE TABLE `tblprofessor` (
-  `idProfessor` int(11) NOT NULL,
-  `Rm` int(11) NOT NULL,
-  `nome` varchar(155) NOT NULL,
-  `idade` int(11) NOT NULL,
-  `idMateria` int(11) NOT NULL,
-  `ativo` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `tblprofessor`
---
-
-INSERT INTO `tblprofessor` (`idProfessor`, `Rm`, `nome`, `idade`, `idMateria`, `ativo`) VALUES
-(1, 123, 'Alessandro', 35, 0, 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tblturma`
---
-
-CREATE TABLE `tblturma` (
+CREATE TABLE `tblturmas` (
   `idTurma` int(11) NOT NULL,
-  `nome` varchar(155) NOT NULL,
+  `nomeTurma` varchar(150) NOT NULL,
+  `anoTurma` int(11) NOT NULL,
   `ativo` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `tblturma`
+-- Extraindo dados da tabela `tblturmas`
 --
 
-INSERT INTO `tblturma` (`idTurma`, `nome`, `ativo`) VALUES
-(1, 'Teste', 1);
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `tblusuario`
---
-
-CREATE TABLE `tblusuario` (
-  `idUsuario` int(11) NOT NULL,
-  `nomeUsuario` varchar(20) NOT NULL,
-  `loginUsuario` varchar(25) NOT NULL,
-  `emailUsuario` varchar(20) NOT NULL,
-  `senhaUsuario` varchar(20) NOT NULL,
-  `ativo` int(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `tblusuario`
---
-
-INSERT INTO `tblusuario` (`idUsuario`, `nomeUsuario`, `loginUsuario`, `emailUsuario`, `senhaUsuario`, `ativo`) VALUES
-(1, 'Alessandro', 'ale', 'ale.r50@gmail.com', 'ale123', 1);
+INSERT INTO `tblturmas` (`idTurma`, `nomeTurma`, `anoTurma`, `ativo`) VALUES
+(1, 'Mtec em Ds', 2023, 1);
 
 --
 -- Índices para tabelas despejadas
@@ -137,28 +85,10 @@ ALTER TABLE `tblalunos`
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
--- Índices para tabela `tblmateria`
+-- Índices para tabela `tblturmas`
 --
-ALTER TABLE `tblmateria`
-  ADD PRIMARY KEY (`idMateria`);
-
---
--- Índices para tabela `tblprofessor`
---
-ALTER TABLE `tblprofessor`
-  ADD PRIMARY KEY (`idProfessor`);
-
---
--- Índices para tabela `tblturma`
---
-ALTER TABLE `tblturma`
+ALTER TABLE `tblturmas`
   ADD PRIMARY KEY (`idTurma`);
-
---
--- Índices para tabela `tblusuario`
---
-ALTER TABLE `tblusuario`
-  ADD PRIMARY KEY (`idUsuario`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -168,41 +98,13 @@ ALTER TABLE `tblusuario`
 -- AUTO_INCREMENT de tabela `tblalunos`
 --
 ALTER TABLE `tblalunos`
-  MODIFY `idAluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idAluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `tblmateria`
+-- AUTO_INCREMENT de tabela `tblturmas`
 --
-ALTER TABLE `tblmateria`
-  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de tabela `tblprofessor`
---
-ALTER TABLE `tblprofessor`
-  MODIFY `idProfessor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de tabela `tblturma`
---
-ALTER TABLE `tblturma`
+ALTER TABLE `tblturmas`
   MODIFY `idTurma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT de tabela `tblusuario`
---
-ALTER TABLE `tblusuario`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `tblalunos`
---
-ALTER TABLE `tblalunos`
-  ADD CONSTRAINT `tblalunos_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `tblusuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
