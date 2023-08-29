@@ -13,14 +13,26 @@
          return $alunos;
      }     
 
-function insereAluno( $nome, $cpf,$idade) {
+function insereAluno($NomeAluno, $CpfAluno, $IdadeAluno, $cepAluno, $lograAluno, $numAluno, $cidadeAluno, $ufAluno, $bairroAluno, $complAluno, $idTurma) {
     $pdo = conectar();    
-    $query = "insert into tblalunos (nome_aluno, cpfaluno,data_nascimento)
-        values (?,?,?,?)";
+    $query = "insert into tblalunos (NomeAluno, CpfAluno, IdadeAluno, cepAluno, lograAluno, numAluno, cidadeAluno, ufAluno, bairroAluno, complAluno, idTurma)
+        values (?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $pdo->prepare($query);
-$stmt->bindParam(1, $nome);
-$stmt->bindParam(2, $cpf);
-$stmt->bindParam(3, $idade);
+$stmt->bindParam(1, $NomeAluno);
+$stmt->bindParam(2, $CpfAluno);
+$stmt->bindParam(3, $IdadeAluno);
+$stmt->bindParam(4, $cepAluno);
+$stmt->bindParam(5, $lograAluno);
+$stmt->bindParam(6, $numAluno);
+$stmt->bindParam(7, $cidadeAluno);
+$stmt->bindParam(8, $ufAluno);
+$stmt->bindParam(9, $bairroAluno);
+$stmt->bindParam(10, $complAluno);
+$stmt->bindParam(11, $idTurma);
+
+
+
+
 
 if ($stmt->execute()) {
   echo "Registro Cadastrado";

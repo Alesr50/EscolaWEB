@@ -2,9 +2,9 @@
 
 include("..\conexao\conexao.php");
 
-function listaTurmas(){
+function listarTurmas(){
    $pdo = conectar();
-    $sql = "SELECT * FROM `tblturma`";
+    $sql = "SELECT * FROM `tblturmas`";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
     $turmas = array();
@@ -18,18 +18,18 @@ function listaTurmas(){
 
 
 
-function insereAluno( $nome, $cpf,$idade) {
+function insereTurma( $nome,$ano) {
     $pdo = conectar();    
-    $query = "insert into tblalunos (nome_aluno, cpfaluno,data_nascimento)
-        values (?,?,?,?)";
+    $query = "insert into tblturmas (nomeTurma, anoTurma)
+        values (?,?)";
 $stmt = $pdo->prepare($query);
 $stmt->bindParam(1, $nome);
-$stmt->bindParam(2, $cpf);
-$stmt->bindParam(3, $idade);
+$stmt->bindParam(2, $ano);
+
 
 if ($stmt->execute()) {
   echo "Registro Cadastrado";
-  header("Location:listarAlunos.php");
+  header("Location:listarTurmas.php");
 }
 }
 

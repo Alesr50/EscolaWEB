@@ -37,6 +37,15 @@
             <li><a class="dropdown-item" href="../professor/listarProfessores.php">Listar Professores</a></li>         
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Turmas
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../turma/formTurma.php">Adicionar Turma</a></li>
+            <li><a class="dropdown-item" href="../turma/listarTurmas.php">Listar Turmas</a></li>         
+          </ul>
+        </li>
 
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>

@@ -31,7 +31,7 @@
                         document.getElementById('log').value = data.logradouro;
                         document.getElementById('bairro').value = data.bairro;
                         document.getElementById('cidade').value = data.localidade;
-                        document.getElementById('estado').value = data.uf;
+                        document.getElementById('uf').value = data.uf;
                         })
                         .catch(error => console.log(error));
                     }
@@ -56,7 +56,7 @@
 
         <div class="mb-3">
             <label class="form-label" for="cep">CEP</label>
-            <input type="text" id="cep" name="cep" class="form-control-sm" required>
+            <input type="text" id="cep" name="cepAluno" class="form-control-sm" required>
             <button type="button" onclick="buscarEndereco()">Buscar Endereço</button> <br>
       </div>
       
@@ -64,12 +64,12 @@
             <div class="row align-items-start">
                     <div class="col">
                         <label for="logradouro">Logradouro</label>
-                        <input type="text" id="log" name="log" class="form-control"  required>
+                        <input type="text" id="log" name="lograAluno" class="form-control"  required>
                     </div >
 
                     <div class="col">
                         <label for="numero">Número</label>
-                        <input type="text" id="num" name="num" class="form-control" required> 
+                        <input type="text" id="num" name="numAluno" class="form-control" required> 
                     </div>
                 </div>
       </div>
@@ -77,34 +77,33 @@
    
                 <div class="mb-3">
                 <label for="cidade">Cidade</label>
-      <input type="text" id="cidade" name="cidade" class="form-control" required>
+      <input type="text" id="cidade" name="cidadeAluno" class="form-control" required>
                 </div>
 
 
       <div class="mb-3">
          <label for="estado">Estado</label>
-      <input type="text" id="estado" name="estado" class="form-control" required>
+      <input type="text" id="uf" name="ufAluno" class="form-control" required>
                 </div>
 
 
       <div class="mb-3">
             <label for="bairro">Bairro</label>
-            <input type="text" id="bairro" name="bairro"  class="form-control" required>
+            <input type="text" id="bairro" name="bairroAluno"  class="form-control" required>
        <div>
 
       <div class="mb-3">
                 <label for="complemento">Complemento</label>
-                <input type="text" id="com" name="com" class="form-control">
+                <input type="text" id="com" name="complAluno" class="form-control">
       </div>
          
-
                 <div class="mb-3">
-                    <select class="form-control" name="idturma">
+                    <select class="form-control" name="idTurma">
                     <option value="">Selecione a Turma</option>
                         <?php include("../turma/banco-turma.php");
-                        $turmas = listaTurmas();
+                        $turmas = listarTurmas();
                         foreach ($turmas as $turma) : ?>
-                            <option value="<?= $turma['idTurma'] ?>"><?= $turma['nome'] ?></option>
+                            <option value="<?= $turma['idTurma'] ?>"><?= $turma['nomeTurma'] ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>       
