@@ -39,15 +39,17 @@
         //Array, vetor...matriz, com os dados vindo do banco de dados;
         //Aqui foi usado o foreach($array,$linhadoarray ), para percorrer o array, 
         $professores = listarProfessores();
+
+        if (!empty($professores)){
         foreach($professores as $professor) :
         /*$aluno é cada item da array ($alunos); Se usa $linhadoarray['campodobancodedados'] , caso seja usado algum dado de banco
             para ser utilizado para ser passado como parametro , é concatenado junto com o html
         */
     ?> 
         <tr>
-        <td><?= $professor['Rm'] ?></td> 
-        <td><?= $professor['nome'] ?></td>
-        <td><?= $professor['idade'] ?></td>    
+        <td><?= $professor['MatriculaProfessor'] ?></td> 
+        <td><?= $professor['nomeProfessor'] ?></td>
+        <td><?= $professor['cpfProfessor'] ?></td>    
         <td><a class="btn btn-primary" href="formAlteraProfessor.php?id=<?=$professor['idProfessor']?>">alterar</a></td>
         <td>
             <form action="removeProfessor.php" method="post">
@@ -57,7 +59,11 @@
         </td>
     </tr>
     <?php
-        endforeach
+        endforeach;} 
+        else{?>
+
+           <tr><td>Vazio</td></tr>
+       <?php }
     ?>
 </table>
 </body>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Ago-2023 às 21:57
--- Versão do servidor: 10.4.20-MariaDB
--- versão do PHP: 8.0.9
+-- Tempo de geração: 26-Jun-2024 às 02:40
+-- Versão do servidor: 10.4.32-MariaDB
+-- versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,7 @@ CREATE TABLE `tblalunos` (
   `idTurma` int(11) NOT NULL,
   `idUsuario` int(11) DEFAULT NULL,
   `ativo` int(1) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `tblalunos`
@@ -56,6 +56,20 @@ INSERT INTO `tblalunos` (`idAluno`, `NomeAluno`, `CpfAluno`, `IdadeAluno`, `cepA
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `tblprofessor`
+--
+
+CREATE TABLE `tblprofessor` (
+  `idProfessor` int(11) NOT NULL,
+  `MatriculaProfessor` int(11) NOT NULL,
+  `NomeProfessor` varchar(255) NOT NULL,
+  `CPFProfessor` varchar(15) NOT NULL,
+  `ativo` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `tblturmas`
 --
 
@@ -64,7 +78,7 @@ CREATE TABLE `tblturmas` (
   `nomeTurma` varchar(150) NOT NULL,
   `anoTurma` int(11) NOT NULL,
   `ativo` int(11) NOT NULL DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `tblturmas`
@@ -85,6 +99,12 @@ ALTER TABLE `tblalunos`
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
+-- Índices para tabela `tblprofessor`
+--
+ALTER TABLE `tblprofessor`
+  ADD PRIMARY KEY (`idProfessor`);
+
+--
 -- Índices para tabela `tblturmas`
 --
 ALTER TABLE `tblturmas`
@@ -99,6 +119,12 @@ ALTER TABLE `tblturmas`
 --
 ALTER TABLE `tblalunos`
   MODIFY `idAluno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `tblprofessor`
+--
+ALTER TABLE `tblprofessor`
+  MODIFY `idProfessor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `tblturmas`
